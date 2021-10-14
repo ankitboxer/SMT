@@ -1,25 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { getSubApp } from './redux/actions/15MinuteReadingActions';
+import {connect} from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  componentDidMount() {
+    console.log(this);
+    this.props.getSubApp({userId: 1});
+  }
+  render() {
+    return <h1> Hello </h1>;
+  }
 }
 
-export default App;
+const mapState = (state) => state
+export default connect(mapState, {getSubApp})(App);
